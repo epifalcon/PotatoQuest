@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://va1tepm130qv"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_vovqe"]
+[ext_resource type="PackedScene" uid="uid://bemv56v6u6tl3" path="res://level_completed.tscn" id="2_0sh4d"]
+[ext_resource type="PackedScene" uid="uid://dtuj4ayscql1b" path="res://player.tscn" id="2_6yi5n"]
+[ext_resource type="Texture2D" uid="uid://dr3bhfttp03wr" path="res://Images/PlatformBack.png" id="2_u5dwt"]
+[ext_resource type="PackedScene" uid="uid://m0enuwhabp3m" path="res://Hazards/hazWater.tscn" id="6_1yi3n"]
+[ext_resource type="PackedScene" uid="uid://b0oxwtwyw3yjf" path="res://Hazards/hazSpikes.tscn" id="9_wqupf"]
+[ext_resource type="PackedScene" uid="uid://dbnt6svos5huk" path="res://Collectibles/potato.tscn" id="10_4bfx6"]
+[ext_resource type="PackedScene" uid="uid://d1nh4g8sryp3f" path="res://tile_map.tscn" id="12_a8dht"]
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_vovqe")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelCompleted" parent="CanvasLayer" instance=ExtResource("2_0sh4d")]
+visible = false
+metadata/_edit_use_anchors_ = true
+
+[node name="PlatformBack" type="Sprite2D" parent="."]
+position = Vector2(0, -5.96046e-08)
+scale = Vector2(0.146429, 0.149206)
+texture = ExtResource("2_u5dwt")
+centered = false
+
+[node name="PlatformBack2" type="Sprite2D" parent="."]
+position = Vector2(656, -3.55271e-15)
+scale = Vector2(0.146429, 0.149206)
+texture = ExtResource("2_u5dwt")
+centered = false
+
+[node name="PlatformBack3" type="Sprite2D" parent="."]
+position = Vector2(-656, -2.11758e-22)
+scale = Vector2(0.146429, 0.149206)
+texture = ExtResource("2_u5dwt")
+centered = false
+
+[node name="PlatformBack4" type="Sprite2D" parent="."]
+position = Vector2(1312, -1.26218e-29)
+scale = Vector2(0.146429, 0.149206)
+texture = ExtResource("2_u5dwt")
+centered = false
+
+[node name="player" parent="." instance=ExtResource("2_6yi5n")]
+position = Vector2(104, 344)
+
+[node name="water5" parent="." instance=ExtResource("6_1yi3n")]
+position = Vector2(480, 384)
+
+[node name="water2" parent="." instance=ExtResource("6_1yi3n")]
+position = Vector2(-32, 384)
+
+[node name="water3" parent="." instance=ExtResource("6_1yi3n")]
+position = Vector2(-64, 384)
+
+[node name="water4" parent="." instance=ExtResource("6_1yi3n")]
+position = Vector2(-96, 384)
+
+[node name="water12" parent="." instance=ExtResource("6_1yi3n")]
+position = Vector2(-128, 384)
+
+[node name="water13" parent="." instance=ExtResource("6_1yi3n")]
+position = Vector2(-160, 384)
+
+[node name="water6" parent="." instance=ExtResource("9_wqupf")]
+position = Vector2(1088, 384)
+
+[node name="water7" parent="." instance=ExtResource("9_wqupf")]
+position = Vector2(1120, 384)
+
+[node name="water8" parent="." instance=ExtResource("9_wqupf")]
+position = Vector2(1152, 384)
+
+[node name="water9" parent="." instance=ExtResource("9_wqupf")]
+position = Vector2(1184, 384)
+
+[node name="water10" parent="." instance=ExtResource("9_wqupf")]
+position = Vector2(1216, 384)
+
+[node name="water11" parent="." instance=ExtResource("9_wqupf")]
+position = Vector2(1248, 384)
+
+[node name="potato" parent="." instance=ExtResource("10_4bfx6")]
+position = Vector2(312, 312)
+
+[node name="potato9" parent="." instance=ExtResource("10_4bfx6")]
+position = Vector2(648, 216)
+
+[node name="potato2" parent="." instance=ExtResource("10_4bfx6")]
+position = Vector2(568, 48)
+
+[node name="potato8" parent="." instance=ExtResource("10_4bfx6")]
+position = Vector2(40, 72)
+
+[node name="potato3" parent="." instance=ExtResource("10_4bfx6")]
+position = Vector2(1112, 304)
+
+[node name="potato4" parent="." instance=ExtResource("10_4bfx6")]
+position = Vector2(952, 8)
+
+[node name="potato5" parent="." instance=ExtResource("10_4bfx6")]
+position = Vector2(1256, -136)
+
+[node name="potato6" parent="." instance=ExtResource("10_4bfx6")]
+position = Vector2(1232, 120)
+
+[node name="potato7" parent="." instance=ExtResource("10_4bfx6")]
+position = Vector2(880, 112)
+
+[node name="potato10" parent="." instance=ExtResource("10_4bfx6")]
+position = Vector2(160, -152)
+
+[node name="level1TileMap" parent="." instance=ExtResource("12_a8dht")]
+layer_0/tile_data = PackedInt32Array(720912, 327681, 0, 720913, 327681, 0, 720914, 327681, 0, 720915, 1, 0, 720916, 65537, 0, 720917, 131073, 0, 720918, 327681, 0, 720919, 327681, 0, 720920, 327681, 0, 720921, 327681, 0, 655380, 327681, 0, 655381, 327681, 0, 655382, 393217, 0, 655386, 393217, 1, 589851, 393217, 1, 589852, 262145, 1, 655387, 262145, 1, 720922, 327681, 0, 720923, 327681, 0, 720924, 1, 1, 720925, 1, 1, 720926, 1, 1, 720927, 1, 1, 720928, 1, 1, 720929, 1, 1, 655388, 262145, 2, 655389, 262145, 2, 655390, 262145, 2, 655391, 262145, 2, 655392, 262145, 2, 655393, 262145, 2, 589853, 262145, 2, 589854, 262145, 2, 589855, 262145, 2, 589856, 262145, 2, 589857, 262145, 2, 720896, 1, 1, 720897, 131073, 1, 720898, 327681, 0, 720899, 327681, 0, 720900, 327681, 0, 720901, 327681, 0, 720902, 327681, 0, 720903, 327681, 0, 720904, 327681, 0, 720905, 327681, 0, 720906, 327681, 0, 720907, 327681, 0, 720908, 327681, 0, 720909, 327681, 0, 720910, 327681, 0, 655378, 262145, 0, 655379, 327681, 0, 655360, 1, 1, 655361, 131073, 1, 589825, 131073, 0, 589824, 1, 0, 655362, 393217, 0, 458772, 1, 2, 524321, 262145, 1, 458785, 327681, 1, 458786, 327681, 1, 458787, 327681, 1, 458788, 327681, 1, 458789, 327681, 1, 720936, 262145, 2, 655400, 262145, 2, 589864, 262145, 2, 524328, 262145, 2, 458792, 262145, 2, 393256, 262145, 2, 327720, 262145, 2, 262184, 262145, 2, 196648, 262145, 2, 131112, 262145, 2, 65576, 262145, 2, 40, 262145, 2, -65496, 262145, 2, -131032, 262145, 2, 262183, 327681, 1, 262182, 327681, 1, 262181, 327681, 1, 327719, 393217, 2, 589863, 393217, 1, 655399, 1, 2, 655398, 1, 2, 655395, 1, 2, 655394, 1, 2, 524322, 393217, 1, 327711, 393217, 2, 262174, 393217, 2, 262173, 327681, 1, 262172, 327681, 1, 262171, 327681, 1, 262170, 327681, 1, 131089, 1, 2, 131090, 1, 2, 65564, 1, 2, 65565, 1, 2, 65566, 1, 2, 65567, 1, 2, 31, 1, 2, -65505, 1, 2, -65508, 1, 2, 28, 1, 2, -196568, 262145, 2, -262104, 262145, 2, -327640, 262145, 2, -393176, 262145, 2, -458712, 262145, 2, -458713, 1, 2, -458714, 1, 2, -458715, 1, 2, -458716, 1, 2, -458717, 1, 2, -458718, 1, 2, -458719, 1, 2, -458720, 1, 2, -458721, 1, 2, -458722, 1, 2, -458723, 1, 2, -458724, 1, 2, -458725, 1, 2, -458726, 1, 2, -458727, 1, 2, -458728, 1, 2, -458729, 1, 2, -458730, 1, 2, -458731, 1, 2, -458732, 1, 2, -458733, 1, 2, -458734, 1, 2, -458735, 1, 2, -458736, 1, 2, -458737, 1, 2, -458738, 1, 2, -458739, 1, 2, -458740, 1, 2, -458741, 1, 2, -458742, 1, 2, -458743, 1, 2, 524288, 1, 0, 458752, 1, 0, 393216, 1, 0, 327680, 1, 0, 262144, 1, 0, 196608, 1, 0, 131072, 1, 0, 65536, 1, 0, 0, 1, 0, -65536, 1, 0, -131072, 1, 0, -196608, 1, 0, -262144, 1, 0, -327680, 1, 0, -393216, 1, 0, -458752, 1, 0, 524289, 131073, 0, 458753, 131073, 0, 393217, 131073, 0, 327681, 131073, 0, 262145, 131073, 0, 196609, 393217, 0, -458751, 1, 2, -458750, 1, 2, -458749, 1, 2, -458748, 1, 2, -458747, 1, 2, -458746, 1, 2, -458745, 1, 2, -458744, 1, 2, 131094, 1, 2, 131095, 1, 2, -262107, 262145, 1, -262106, 327681, 1, -262105, 327681, 1, -196569, 393217, 2, -262108, 393217, 1, -196573, 393217, 1, -131038, 393217, 1, -393210, 1, 2, -327674, 1, 2, -262138, 1, 2, -196602, 1, 2, -131066, 1, 2, -65530, 1, 2, 6, 1, 2, 65542, 1, 2, 131078, 1, 2)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Boss/giant_potato.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Boss/potato_king.svg" id="2_texture"]
+[ext_resource type="PackedScene" path="res://Boss/sprouted_potato.tscn" id="3_sprout"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_boss"]
+radius = 54.0
+
+[node name="Boss" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_script")
+sprout_scene = ExtResource("3_sprout")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -72)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -45)
+shape = SubResource("CircleShape2D_boss")

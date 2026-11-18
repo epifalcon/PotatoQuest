@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://level_template.tscn" id="1_template"]
+[ext_resource type="Script" path="res://boss_level.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://ylj31bprabqx" path="res://Images/lev Background.png" id="3_background"]
+[ext_resource type="PackedScene" path="res://Boss/giant_potato.tscn" id="4_boss"]
+[ext_resource type="PackedScene" uid="uid://d1nh4g8sryp3f" path="res://tile_map.tscn" id="5_tile_map"]
+[ext_resource type="Script" path="res://Boss/boss_victory.gd" id="6_boss_victory"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(960, 32)
+
+[node name="BossLevel" instance=ExtResource("1_template")]
+script = ExtResource("2_script")
+boss_level = true
+
+[node name="Background" type="CanvasLayer" parent="." index="0"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background" index="0"]
+
+[node name="PlatformBack2" type="Sprite2D" parent="Background/ParallaxBackground" index="0"]
+position = Vector2(1.52588e-05, 0)
+scale = Vector2(1.33333, 1)
+texture = ExtResource("3_background")
+centered = false
+
+[node name="Player" parent="." index="2"]
+position = Vector2(88, 272)
+has_potato_gun = true
+
+[node name="Boss" parent="." index="4" instance=ExtResource("4_boss")]
+position = Vector2(650, 288)
+
+[node name="ArenaFloor" type="StaticBody2D" parent="." index="5"]
+position = Vector2(480, 304)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaFloor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="FloorVisual" type="Polygon2D" parent="ArenaFloor"]
+polygon = PackedVector2Array(-480, -16, 480, -16, 480, 180, -480, 180)
+color = Color(0.31, 0.24, 0.16, 1)
+
+[node name="Potatoes" type="Node2D" parent="."]
+
+[node name="ArenaPlatforms" parent="." instance=ExtResource("5_tile_map")]
+layer_0/tile_data = PackedInt32Array(393226, 0, 0, 393227, 1, 0, 393228, 2, 0, 393229, 0, 0, 327691, 1, 0, 458768, 2, 0, 458769, 0, 0, 458770, 1, 0, 393233, 2, 0, 393234, 0, 0, 327700, 1, 0, 327701, 2, 0, 327702, 0, 0, 327703, 1, 0, 262165, 2, 0, 393240, 0, 0, 393241, 2, 0, 393242, 1, 0)
+
+[node name="BossIntro" type="ColorRect" parent="UIElements"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.02, 0.02, 0.78)
+
+[node name="Title" type="Label" parent="UIElements/BossIntro"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -60.0
+offset_right = 300.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You've received a potato gun.\nYou will need this!\n\nBOSS BATTLE: Potato King"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 21
+
+[node name="BossHealthLabel" type="Label" parent="UIElements"]
+offset_left = 200.0
+offset_top = 16.0
+offset_right = 440.0
+offset_bottom = 38.0
+text = "POTATO KING  30 / 30"
+horizontal_alignment = 1
+
+[node name="BossHealth" type="ProgressBar" parent="UIElements"]
+offset_left = 200.0
+offset_top = 40.0
+offset_right = 440.0
+offset_bottom = 54.0
+max_value = 30.0
+value = 30.0
+show_percentage = false
+
+[node name="BossVictory" type="ColorRect" parent="UIElements"]
+visible = false
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.02, 0.02, 0.78)
+script = ExtResource("6_boss_victory")
+
+[node name="VictoryTitle" type="Label" parent="UIElements/BossVictory"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -18.0
+offset_right = 250.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "POTATO KING DEFEATED!"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 24

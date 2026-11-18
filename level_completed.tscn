@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bemv56v6u6tl3"]
+
+[ext_resource type="Script" path="res://level_completed.gd" id="1_et32f"]
+
+[sub_resource type="GDScript" id="GDScript_teds1"]
+
+[node name="LevelCompleted" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.262745, 0.231373, 0.462745, 0.490196)
+script = ExtResource("1_et32f")
+
+[node name="LevelCountdown" type="Label" parent="."]
+layout_mode = 2
+offset_left = 425.0
+offset_top = 192.0
+offset_right = 426.0
+offset_bottom = 215.0
+script = SubResource("GDScript_teds1")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "You got all the potatoes!
+
+The next level will start in:"

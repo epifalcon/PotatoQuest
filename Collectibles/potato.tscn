@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbnt6svos5huk"]
+
+[ext_resource type="Script" path="res://Collectibles/potato.gd" id="1_tgi6h"]
+[ext_resource type="Texture2D" uid="uid://8n2phmy4heg3" path="res://Images/levTiles.png" id="2_7ka3k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1v1b"]
+size = Vector2(24, 24)
+
+[node name="potato" type="Area2D" groups=["potatoes"]]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_tgi6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(12, -12)
+texture = ExtResource("2_7ka3k")
+region_enabled = true
+region_rect = Rect2(0, 96, 20, 23)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, -12)
+shape = SubResource("RectangleShape2D_q1v1b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

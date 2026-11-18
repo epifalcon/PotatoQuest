@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://boj4w6whfs0yp"]
+
+[ext_resource type="Script" uid="uid://bqp1oedhntdyb" path="res://start_menu.gd" id="1_xwfvr"]
+[ext_resource type="Texture2D" uid="uid://kehg872tktve" path="res://Images/Potato Quest.png" id="2_2qglr"]
+
+[node name="ColorRect" type="ColorRect" unique_id=1433380888]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.470588, 0.658824, 0.8, 1)
+
+[node name="StartMenu" type="CenterContainer" parent="." unique_id=1011972548]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xwfvr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu" unique_id=1251462346]
+layout_mode = 2
+
+[node name="StartGameButton" type="Button" parent="StartMenu/VBoxContainer" unique_id=1486967342]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start Game"
+
+[node name="LevelSelect" type="Button" parent="StartMenu/VBoxContainer" unique_id=2107058243]
+layout_mode = 2
+text = "Level Select"
+
+[node name="QuitButton" type="Button" parent="StartMenu/VBoxContainer" unique_id=1787274585]
+layout_mode = 2
+text = "Quit"
+
+[node name="Sprite2D" type="Sprite2D" parent="StartMenu" unique_id=778510438]
+position = Vector2(320, 68)
+scale = Vector2(1.6, 2.25)
+texture = ExtResource("2_2qglr")
+
+[connection signal="pressed" from="StartMenu/VBoxContainer/StartGameButton" to="StartMenu" method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="StartMenu/VBoxContainer/QuitButton" to="StartMenu" method="_on_quit_button_pressed"]

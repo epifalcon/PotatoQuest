@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://m0enuwhabp3m"]
+
+[ext_resource type="Texture2D" uid="uid://8n2phmy4heg3" path="res://Images/levTiles.png" id="1_g5f7l"]
+[ext_resource type="PackedScene" uid="uid://bvjj5pd0vaonf" path="res://Hazards/hazard.tscn" id="1_k8tb5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_np7un"]
+size = Vector2(32, 32)
+
+[node name="water" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, -16)
+texture = ExtResource("1_g5f7l")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(96, 0, 32, 32)
+
+[node name="Hazard" parent="." instance=ExtResource("1_k8tb5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazard"]
+position = Vector2(16, -16)
+shape = SubResource("RectangleShape2D_np7un")

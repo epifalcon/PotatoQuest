@@ -1,0 +1,125 @@
+[gd_scene load_steps=15 format=3 uid="uid://dtuj4ayscql1b"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_5gnvo"]
+[ext_resource type="Resource" uid="uid://dwmoglfof1vsu" path="res://DefaultMovementData.tres" id="2_8fhwj"]
+[ext_resource type="Texture2D" uid="uid://b063gom6awes7" path="res://Images/playerSprite(5).png" id="3_hc2va"]
+[ext_resource type="PackedScene" path="res://Boss/potato_projectile.tscn" id="4_potato_projectile"]
+[ext_resource type="Texture2D" path="res://Images/PotatoCannon.png" id="5_potato_cannon"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaajv"]
+atlas = ExtResource("3_hc2va")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3bmy"]
+atlas = ExtResource("3_hc2va")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3h6j"]
+atlas = ExtResource("3_hc2va")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wji8"]
+atlas = ExtResource("3_hc2va")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p11ah"]
+atlas = ExtResource("3_hc2va")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmvhs"]
+atlas = ExtResource("3_hc2va")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c3l7y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaajv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3bmy")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3h6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wji8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p11ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmvhs")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4m3pr"]
+size = Vector2(14, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg27i"]
+size = Vector2(12, 28)
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(1, -3)
+collision_layer = 10
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_snap_length = 3.0
+script = ExtResource("1_5gnvo")
+movement_data = ExtResource("2_8fhwj")
+potato_projectile_scene = ExtResource("4_potato_projectile")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(7, -14)
+sprite_frames = SubResource("SpriteFrames_c3l7y")
+animation = &"run"
+frame_progress = 0.798853
+offset = Vector2(0, 1)
+
+[node name="PotatoCannon" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(18, -16)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_potato_cannon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -12)
+shape = SubResource("RectangleShape2D_4m3pr")
+
+[node name="CoyoteJumpTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="HitCooldownTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(8, -45)
+process_callback = 0
+position_smoothing_speed = 10.0
+
+[node name="HazardDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
+position = Vector2(7, -12)
+shape = SubResource("RectangleShape2D_kg27i")
+
+[connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
+[connection signal="timeout" from="HitCooldownTimer" to="." method="_on_hit_cooldown_timer_timeout"]
